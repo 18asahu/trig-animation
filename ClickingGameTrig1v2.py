@@ -150,8 +150,8 @@ class MyMplWidget(FigureCanvas):
         self.fig.canvas.update()
         self.fig.canvas.flush_events()
         
-      
-         
+'''SIDENOTE:    The error I'm getting directs me to a new file which is in the matplotlib folder in my laptop '''
+
 app = None
 
 def main():
