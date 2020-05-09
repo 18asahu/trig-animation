@@ -33,13 +33,14 @@ class MyCentralWidget(QWidget):
         super().__init__()
         self.main_window = main_window
         
+        #Define what to do when each button pressed
         left_button = QPushButton('Plot sin graph', self)
         left_button.clicked.connect(self.on_left_button_clicked)
         
         right_button = QPushButton('Plot cos graph', self)
         right_button.clicked.connect(self.on_right_button_clicked)
 
-        self.mpl_widget = MyMplWidget(self,main_window)
+        self.mpl_widget = MyMplWidget(self,main_window) #I got an error when I left the contents of the parantheses empty. In lessons, it was left empty. Not sure why I got an error
         
         hbox = QHBoxLayout()
         hbox.addStretch(1)
@@ -57,7 +58,7 @@ class MyCentralWidget(QWidget):
     def on_left_button_clicked(self):
         self.main_window.statusBar().showMessage('Left button pressed')
         self.mpl_widget.plot_sin() #CHECK TO SEE IF PARAMETER DEFINITIONS NEEDED
-        self.mpl_widget.update_sin()
+        self.mpl_widget.update_sin() 
          
         
         
@@ -77,10 +78,12 @@ class MyMplWidget(FigureCanvas):
         
        # self.MCW = MyCentralWidget()
         
+        #Set parameters for how graph evolves with time 
+        #(TBH, not entirely sure how this works. It works in the demo we were given so I stuck with it)
         self.frame_counter = 0
         self.k = 5
         self.dir = 1
-        self.plot_sin(self.k)
+        self.plot_sin(self.k)    #defined below
         self.plot_cos(self.k)
         
         self.timer = QTimer(self)
@@ -103,7 +106,9 @@ class MyMplWidget(FigureCanvas):
             self.dir = -1
         elif self.k<5:
             self. dir = 1
-            
+        
+        #I am suspicious about the 2 lines below because in the Canvas module, we only plotted an animation of sin
+        #also, on canvas there were two separate examples - one only for the sin animation and one only for normal cos and sin graphs which were displayed depending on the button clicked
         self.update_sin(self.k)
         self.update_cos(self.k)
         
