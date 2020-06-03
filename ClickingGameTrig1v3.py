@@ -83,7 +83,7 @@ class MyCentralWidget(QWidget):
         
 class MyMplWidget(FigureCanvas):
     
-    def __init__(self, main_window, figsize = (2,1), dpi = 100):
+    def __init__(self, main_window, figsize = (4,2), dpi = 100):
         
         self.fig = plt.figure(figsize = figsize, dpi=dpi)
         #self.main_window = main_window         UNCOMMENT THIS IF IT DOESN;T WORK
